@@ -3,7 +3,7 @@ import Calculate from "./Calculate";
 
 function Form() {
   const formInputs = useRef();
-  const [showForm, setShowForm] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   // array with SoMe
   const SoMe = [
     { name: "Tik Tok", key: "tiktok", co2: 2.63 },
@@ -53,21 +53,21 @@ function Form() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} ref={formInputs}>
-        {SoMe.map((element) => {
-          return (
-            <div className="form-control" key={element.key}>
-              <label htmlFor={element.name}>{element.name}</label>
-              <input type="number" name={element.key} co2={element.co2} onChange={handleChange}></input>
-            </div>
-          );
-        })}
-        <button>Calculate</button>
-      </form>
-      {/*       
-      {!showForm && <button onClick={() => setShowForm(true)}>Buy now</button>}
-      {showForm && <CheckoutForm cart={props.cart}></CheckoutForm>} */}
-      <Calculate results={details} />
+        {submitted ? <Calculate results={details} /> : (
+            <>
+                <form onSubmit={handleSubmit} ref={formInputs}>
+                    {SoMe.map((element) => {
+                    return (
+                        <div className="form-control" key={element.key}>
+                        <label htmlFor={element.name}>{element.name}</label>
+                        <input type="number" name={element.key} co2={element.co2} onChange={handleChange}></input>
+                        </div>
+                    );
+                    })}
+                    <button onClick={() => setSubmitted(true)}>Calculate</button>
+                </form>
+            </>
+        )}
     </>
   );
 }
