@@ -33,6 +33,7 @@ function Form() {
   // function to calculate co2 produced
 
   const handleChange = (e) => {
+    e.preventDefault();
     //const name = e.target.name;
     //const value = e.target.value;
     // to make the above looks prettier (object destructuring) , it is the same as saying :
@@ -42,18 +43,18 @@ function Form() {
     });
   };
   const handleSubmit = (e) => {
+    e.preventDefault();
     console.log("DETAILS", details);
     const convertToArray = Object.entries(details);
     console.log(convertToArray);
     console.log(copy);
     setCopy(convertToArray);
     console.log("COPY", copy);
-    e.preventDefault();
   };
 
   return (
     <>
-        {submitted ? <Calculate results={details} /> : (
+        {submitted ? <Calculate original={SoMe} results={details} /> : (
             <>
                 <form onSubmit={handleSubmit} ref={formInputs}>
                     {SoMe.map((element) => {
@@ -64,7 +65,7 @@ function Form() {
                         </div>
                     );
                     })}
-                    <button onClick={() => setSubmitted(true)}>Calculate</button>
+                    <button type="submit" onClick={() => setSubmitted(true)}>Calculate</button>
                 </form>
             </>
         )}
