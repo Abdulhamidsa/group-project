@@ -1,5 +1,5 @@
 export default function Calculate(props) {
-  console.log(props);
+  console.log("props", props);
   const multiply = {
     tiktok: 2.63,
     reddit: 2.48,
@@ -12,21 +12,20 @@ export default function Calculate(props) {
     yt: 0.46,
   };
 
-  function calc(results) {
-    console.log("results", results);
-
+  function calc(tiktok) {
+    console.log(tiktok);
+    console.log("test tiktok", tiktok * multiply.tiktok);
+    /* 
     Object.keys(results).forEach(function (key, index) {
       console.log(key, multiply[key]);
       results[key] = results[key] * multiply[key];
-    });
-
-    console.log(results);
+    }); */
   }
 
   // console.log(calc(props.results));
   return (
     <>
-      {calc(props.results)}
+      {calc(props.tiktok)}
       <p>hej</p>
     </>
   );
