@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
-// :)
-import FormV2 from "./FormV2";
+import Calculate from "./Calculate";
 
 function Form() {
   const formInputs = useRef();
+  const [showForm, setShowForm] = useState(false);
   // array with SoMe
   const SoMe = [
     { name: "Tik Tok", key: "tiktok", co2: 2.63 },
@@ -57,7 +57,10 @@ function Form() {
         })}
         <button>Calculate</button>
       </form>
-      <FormV2></FormV2>
+      {/*       
+      {!showForm && <button onClick={() => setShowForm(true)}>Buy now</button>}
+      {showForm && <CheckoutForm cart={props.cart}></CheckoutForm>} */}
+      <Calculate results={details} />
     </>
   );
 }
