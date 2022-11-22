@@ -18,15 +18,10 @@ function Form() {
     { name: "Youtube", key: "yt", co2: 0.46 },
   ];
 
-  const [details, setDetails] = useState({
-    ig: "",
-    snapchat: "",
-    fb: "",
-    li: "",
-    twitter: "",
-    twitch: "",
-    yt: "",
-  });
+  const [details, setDetails] = useState({});
+
+  /*   const result = Object.values(details);
+  console.log(result); */
 
   // function to calculate co2 produced
 

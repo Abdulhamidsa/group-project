@@ -1,5 +1,5 @@
 export default function Calculate(props) {
-  console.log(props);
+  // console.log(props);
   const multiply = {
     tiktok: 2.63,
     reddit: 2.48,
@@ -13,11 +13,11 @@ export default function Calculate(props) {
   };
 
   function calc(arr) {
-    // console.log(arr);
-    // arr.map((obj) => (obj.co2 = obj.co2 * multiply.tiktok));
-    // return arr;
+    console.log(arr);
+    //console.log(arr);
     // multiply.tiktok * 5;
-    return multiply.tiktok * 5;
+    /*     return multiply.tiktok * 5;
+     */
   }
 
   // console.log(calc(props.results));
