@@ -20,7 +20,6 @@ export default function Calculate(props) {
     });
 
     console.log(results);
-    return multiply.tiktok * 5;
   }
 
   // console.log(calc(props.results));
