@@ -16,7 +16,7 @@ export default function Calculate(props) {
     console.log("results", results);
 
     Object.keys(results).forEach(function (key, index) {
-      results[key] *= 12;
+      results[key] = results[key] * multiply.tiktok;
     });
 
     console.log(results);
