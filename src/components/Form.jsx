@@ -18,6 +18,8 @@ function Form() {
     { name: "Youtube", key: "yt", co2: 0.46 },
   ];
 
+  const [copy, setCopy] = useState([]);
+
   const [details, setDetails] = useState({
     ig: "",
     snapchat: "",
@@ -40,7 +42,12 @@ function Form() {
     });
   };
   const handleSubmit = (e) => {
-    console.log(details);
+    console.log("DETAILS", details);
+    const convertToArray = Object.entries(details);
+    console.log(convertToArray);
+    console.log(copy);
+    setCopy(convertToArray);
+    console.log("COPY", copy);
     e.preventDefault();
   };
 
@@ -51,7 +58,7 @@ function Form() {
           return (
             <div className="form-control" key={element.key}>
               <label htmlFor={element.name}>{element.name}</label>
-              <input type="number" name={element.key} co2={element.co2} /* onChange={handleChange} */></input>
+              <input type="number" name={element.key} co2={element.co2} onChange={handleChange}></input>
             </div>
           );
         })}
