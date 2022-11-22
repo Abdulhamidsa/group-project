@@ -51,7 +51,7 @@ function Form() {
           return (
             <div className="form-control" key={element.key}>
               <label htmlFor={element.name}>{element.name}</label>
-              <input type="number" name={element.key} co2={element.co2} onChange={handleChange}></input>
+              <input type="number" name={element.key} co2={element.co2} /* onChange={handleChange} */></input>
             </div>
           );
         })}
