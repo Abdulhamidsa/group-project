@@ -12,19 +12,22 @@ export default function Calculate(props) {
     yt: 0.46,
   };
 
-  function calc(arr) {
-    // console.log(arr);
-    // arr.map((obj) => (obj.co2 = obj.co2 * multiply.tiktok));
-    // return arr;
-    // multiply.tiktok * 5;
+  function calc(results) {
+    console.log("results", results);
+
+    Object.keys(results).forEach(function (key, index) {
+      results[key] *= 12;
+    });
+
+    console.log(results);
     return multiply.tiktok * 5;
   }
 
   // console.log(calc(props.results));
   return (
     <>
-      {calc(props)}
-      <p></p>
+      {calc(props.results)}
+      <p>hej</p>
     </>
   );
 }
