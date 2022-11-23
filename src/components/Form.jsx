@@ -32,6 +32,8 @@ function Form() {
     yt: 0.46,
   };
 
+  // function to calculate co2 produced
+
   const handleSubmit = (event) => {
     console.log("handleSubmit ran");
     console.log("data", formInputs.current.elements);
@@ -58,19 +60,17 @@ function Form() {
   return (
     <>
         {submitted ? <Calculate results={formData} /> : (
-            <>
-                <form onSubmit={handleSubmit} ref={formInputs}>
-                  {SoMe.map((element) => {
-                    return (
-                      <div className="form-control" key={element.key}>
-                        <label htmlFor={element.name}>{element.name}</label>
-                        <input type="number" name={element.key}></input>
-                      </div>
-                    );
-                  })}
-                  <button>Calculate</button>
-                </form>
-            </>
+            <form onSubmit={handleSubmit} ref={formInputs}>
+              {SoMe.map((element) => {
+                return (
+                  <div className="form-control" key={element.key}>
+                    <label htmlFor={element.name}>{element.name}</label>
+                    <input type="number" name={element.key}></input>
+                  </div>
+                );
+              })}
+              <button>Calculate</button>
+            </form>
         )}
     </>
   );
