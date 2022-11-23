@@ -7,6 +7,7 @@ function Form() {
   const [showForm, setShowForm] = useState(false);
   const tiktokRef = useRef();
   const redditRef = useRef();
+
   // array with SoMe
   const SoMe = [
     { name: "Tik Tok", key: "tiktok", co2: 2.63 },
@@ -20,6 +21,28 @@ function Form() {
     { name: "Twitch", key: "twitch", co2: 0.55 },
     { name: "Youtube", key: "yt", co2: 0.46 },
   ];
+
+  const multiply = {
+    tiktok: 2.63,
+    reddit: 2.48,
+    pinterest: 1.3,
+    ig: 1.05,
+    snapchat: 0.87,
+    fb: 0.79,
+    li: 0.71,
+    twitter: 0.6,
+    yt: 0.46,
+  };
+
+  function calc(tiktok) {
+    console.log(tiktok);
+    console.log("test tiktok", tiktok * multiply.tiktok);
+
+    Object.keys(results).forEach(function (key, index) {
+      console.log(key, multiply[key]);
+      results[key] = results[key] * multiply[key];
+    });
+  }
 
   const [details, setDetails] = useState({
     ig: "",
@@ -38,8 +61,8 @@ function Form() {
     console.log("handleSubmit ran");
     event.preventDefault(); // 👈️ prevent page refresh
     // 👇️ access input values here
-    console.log("first 👉️", tiktokRef.current.value);
-    console.log("last 👉️", redditRef.current.value);
+    console.log("first 👉️", tiktokRef.current.value * multiply.tiktok);
+    console.log("last 👉️", redditRef.current.value * multiply.reddit);
 
     // 👇️ clear all input values in the form
 
@@ -52,13 +75,22 @@ function Form() {
         <div className="form-control">
           <input ref={tiktokRef} htmlFor="tiktok" />
           <input ref={redditRef} htmlFor="reddit" />
+          {/*           <input ref={tiktokRef} htmlFor="pinterest" />
+          <input ref={redditRef} htmlFor="instagram" />
+          <input ref={tiktokRef} htmlFor="snapchat" />
+          <input ref={redditRef} htmlFor="facebook" />
+          <input ref={tiktokRef} htmlFor="linkedin" />
+          <input ref={redditRef} htmlFor="twitter" />
+          <input ref={redditRef} htmlFor="youtube" /> */}
         </div>
         <button>Calculate</button>
       </form>
+      <p></p>
+
       {/*       
       {!showForm && <button onClick={() => setShowForm(true)}>Buy now</button>}
       {showForm && <CheckoutForm cart={props.cart}></CheckoutForm>} */}
-      <Calculate tiktok={tiktokRef} />
+      <Calculate />
     </>
   );
 }
