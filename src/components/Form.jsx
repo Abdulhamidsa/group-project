@@ -4,6 +4,11 @@ import Calculate from "./Calculate";
 function Form() {
   const formInputs = useRef();
   const [formData, setFormData] = useState({});
+<<<<<<< HEAD
+=======
+
+  const [submitted, setSubmitted] = useState(false);
+>>>>>>> 5eab99495fcf8d96e602fedc67545f9d11673062
   // array with SoMe
   const SoMe = [
     { name: "Tik Tok", key: "tiktok", co2: 2.63 },
@@ -30,8 +35,11 @@ function Form() {
     yt: 0.46,
   };
 
+<<<<<<< HEAD
   // function to calculate co2 produced
 
+=======
+>>>>>>> 5eab99495fcf8d96e602fedc67545f9d11673062
   const handleSubmit = (event) => {
     console.log("handleSubmit ran");
     console.log("data", formInputs.current.elements);
@@ -51,12 +59,13 @@ function Form() {
 
     setFormData(values);
     // 👇️ clear all input values in the form
-
+    setSubmitted(true);
     return values;
   };
 
   return (
     <>
+<<<<<<< HEAD
       <form onSubmit={handleSubmit} ref={formInputs}>
         {SoMe.map((element) => {
           return (
@@ -72,6 +81,23 @@ function Form() {
       <p></p>
 
       <Calculate data={formData} />
+=======
+        {submitted ? <Calculate results={details} /> : (
+            <>
+                <form onSubmit={handleSubmit} ref={formInputs}>
+                  {SoMe.map((element) => {
+                    return (
+                      <div className="form-control" key={element.key}>
+                        <label htmlFor={element.name}>{element.name}</label>
+                        <input type="number" name={element.key}></input>
+                      </div>
+                    );
+                  })}
+                  <button>Calculate</button>
+                </form>
+            </>
+        )}
+>>>>>>> 5eab99495fcf8d96e602fedc67545f9d11673062
     </>
   );
 }
