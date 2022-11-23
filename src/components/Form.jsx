@@ -56,7 +56,7 @@ function Form() {
     const keys = Object.keys(multiply);
     const values = keys.map((entries) => {
       const obj = {};
-      obj[entries] = formInputs.current.elements[entries].value;
+      obj[entries] = formInputs.current.elements[entries].value * multiply[entries] * 60;
       return { ...obj };
     });
     console.log(values);
