@@ -34,7 +34,7 @@ export default function Calculate(props) {
   return (
     <>
       <section className="result">
-        <h2>{calc(props.results)}</h2>
+        <h2>{calc(props.results)} CO2</h2>
         <p>It is as if you manufactured 1039 plastic bottles every day.</p>
       </section>
       {/* here will be info about how many bottles person produced */}

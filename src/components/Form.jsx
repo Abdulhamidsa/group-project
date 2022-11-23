@@ -54,7 +54,7 @@ function Form() {
 
   return (
     <>
-        {submitted ? <Calculate original={SoMe} results={details} /> : (
+        {submitted ? <Calculate results={details} /> : (
             <>
                 <form onSubmit={handleSubmit} ref={formInputs}>
                     {SoMe.map((element) => {
