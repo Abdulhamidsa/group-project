@@ -9,14 +9,11 @@ export default function Calculate(props) {
 
   console.log("test results", newResultsArray)
 
-<<<<<<< HEAD
-=======
   // function to sum everything up
   function sumUp(array) {
     return array.reduce((a, b) => a + b, 0);
   }
 
->>>>>>> 5eab99495fcf8d96e602fedc67545f9d11673062
   return (
     <>
       <section className="result">
