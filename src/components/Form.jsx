@@ -3,12 +3,9 @@ import Calculate from "./Calculate";
 
 function Form() {
   const formInputs = useRef();
-  const [minutes, setMinutes] = useState([]);
-  const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({});
-  const tiktokRef = useRef();
-  const redditRef = useRef();
 
+  const [submitted, setSubmitted] = useState(false);
   // array with SoMe
   const SoMe = [
     { name: "Tik Tok", key: "tiktok", co2: 2.63 },
@@ -35,20 +32,6 @@ function Form() {
     yt: 0.46,
   };
 
-  function calc(tiktok) {
-    console.log(tiktok);
-    console.log("test tiktok", tiktok * multiply.tiktok);
-
-    Object.keys(results).forEach(function (key, index) {
-      console.log(key, multiply[key]);
-      results[key] = results[key] * multiply[key];
-    });
-  }
-
-  const [details, setDetails] = useState({});
-
-  // function to calculate co2 produced
-
   const handleSubmit = (event) => {
     console.log("handleSubmit ran");
     console.log("data", formInputs.current.elements);
@@ -68,44 +51,27 @@ function Form() {
 
     setFormData(values);
     // 👇️ clear all input values in the form
-
+    setSubmitted(true);
     return values;
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} ref={formInputs}>
-        {SoMe.map((element) => {
-          return (
-            <div className="form-control" key={element.key}>
-              <label htmlFor={element.name}>{element.name}</label>
-              <input type="number" name={element.key}></input>
-            </div>
-          );
-        })}
-        <button>Calculate</button>
-      </form>
-
-      {/*       <form onSubmit={handleSubmit} ref={formInputs}>
-        <div className="form-control">
-          <input htmlFor="tiktok" name="tiktok" />
-          <input htmlFor="reddit" name="reddit" /> */}
-      {/*           <input ref={tiktokRef} htmlFor="pinterest" />
-          <input ref={redditRef} htmlFor="instagram" />
-          <input ref={tiktokRef} htmlFor="snapchat" />
-          <input ref={redditRef} htmlFor="facebook" />
-          <input ref={tiktokRef} htmlFor="linkedin" />
-          <input ref={redditRef} htmlFor="twitter" />
-          <input ref={redditRef} htmlFor="youtube" /> */}
-      {/*         </div>
-        <button>Calculate</button>
-      </form> */}
-      <p></p>
-
-      {/*       
-      {!showForm && <button onClick={() => setShowForm(true)}>Buy now</button>}
-      {showForm && <CheckoutForm cart={props.cart}></CheckoutForm>} */}
-      <Calculate data={formData} />
+        {submitted ? <Calculate results={details} /> : (
+            <>
+                <form onSubmit={handleSubmit} ref={formInputs}>
+                  {SoMe.map((element) => {
+                    return (
+                      <div className="form-control" key={element.key}>
+                        <label htmlFor={element.name}>{element.name}</label>
+                        <input type="number" name={element.key}></input>
+                      </div>
+                    );
+                  })}
+                  <button>Calculate</button>
+                </form>
+            </>
+        )}
     </>
   );
 }

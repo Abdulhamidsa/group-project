@@ -1,33 +1,22 @@
 export default function Calculate(props) {
   console.log("props", props);
-  const multiply = {
-    tiktok: 2.63,
-    reddit: 2.48,
-    pinterest: 1.3,
-    ig: 1.05,
-    snapchat: 0.87,
-    fb: 0.79,
-    li: 0.71,
-    twitter: 0.6,
-    yt: 0.46,
-  };
 
-  function calc(obj) {
-    console.log(obj);
-
-    //obj.tiktok = 10;
-    /* 
-    Object.keys(results).forEach(function (key, index) {
-      console.log(key, multiply[key]);
-      results[key] = results[key] * multiply[key];
-    }); */
+  // function to sum everything up
+  function sumUp(numbers) {
+    return Object.values(numbers).reduce((a, b) => a + b, 0);
   }
 
-  // console.log(calc(props.results));
   return (
     <>
-      {calc(props.data)}
-      <p>hej</p>
+      <section className="result">
+        <h2>{calc(props.results)} CO2</h2>
+        <p>It is as if you manufactured 1039 plastic bottles every day.</p>
+      </section>
+      {/* here will be info about how many bottles person produced */}
+
+      {/* here will be option to see more details */}
+    
+      {/* <p>hej</p> */}
     </>
   );
 }
