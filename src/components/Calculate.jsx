@@ -12,9 +12,9 @@ export default function Calculate(props) {
     yt: 0.46,
   };
 
-  function calc(tiktok) {
-    console.log(tiktok);
-    console.log("test tiktok", tiktok * multiply.tiktok);
+  function calc(obj) {
+    obj.tiktok = obj.tiktok * multiply.tiktok;
+
     /* 
     Object.keys(results).forEach(function (key, index) {
       console.log(key, multiply[key]);
@@ -25,7 +25,7 @@ export default function Calculate(props) {
   // console.log(calc(props.results));
   return (
     <>
-      {calc(props.tiktok)}
+      {calc(props.formData)}
       <p>hej</p>
     </>
   );

@@ -5,6 +5,7 @@ function Form() {
   const formInputs = useRef();
   const [minutes, setMinutes] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({});
   const tiktokRef = useRef();
   const redditRef = useRef();
 
@@ -61,9 +62,12 @@ function Form() {
     console.log("handleSubmit ran");
     event.preventDefault(); // 👈️ prevent page refresh
     // 👇️ access input values here
-    console.log("first 👉️", tiktokRef.current.value * multiply.tiktok);
-    console.log("last 👉️", redditRef.current.value * multiply.reddit);
+    const formObj = {};
+    formObj.tiktok = formInputs.current.elements.tiktok.value * multiply.tiktok;
+    console.log("first 👉️", formInputs.current.elements.tiktok.value * multiply.tiktok);
+    console.log("last 👉️", formInputs.current.elements.reddit.value * multiply.reddit);
 
+    setFormData(formObj);
     // 👇️ clear all input values in the form
 
     return values;
@@ -73,8 +77,8 @@ function Form() {
     <>
       <form onSubmit={handleSubmit} ref={formInputs}>
         <div className="form-control">
-          <input ref={tiktokRef} htmlFor="tiktok" />
-          <input ref={redditRef} htmlFor="reddit" />
+          <input ref={tiktokRef} htmlFor="tiktok" name="tiktok" />
+          <input ref={redditRef} htmlFor="reddit" name="reddit" />
           {/*           <input ref={tiktokRef} htmlFor="pinterest" />
           <input ref={redditRef} htmlFor="instagram" />
           <input ref={tiktokRef} htmlFor="snapchat" />
@@ -90,7 +94,7 @@ function Form() {
       {/*       
       {!showForm && <button onClick={() => setShowForm(true)}>Buy now</button>}
       {showForm && <CheckoutForm cart={props.cart}></CheckoutForm>} */}
-      <Calculate />
+      <Calculate data={formData} />
     </>
   );
 }
