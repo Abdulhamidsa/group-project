@@ -66,8 +66,10 @@ function Form() {
               {SoMe.map((element) => {
                 return (
                   <div className="form-control" key={element.key}>
-                    <label htmlFor={element.name}>{element.name}</label>
-                    <input type="number" name={element.key}></input>
+                    <label class="column1" htmlFor={element.name}>
+                      {element.name}
+                    </label>
+                    <input class="column2" type="number" name={element.key}></input>
                   </div>
                 );
               })}

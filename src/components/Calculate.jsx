@@ -15,7 +15,7 @@ export default function Calculate(props) {
       {/* here will be info about how many bottles person produced */}
 
       {/* here will be option to see more details */}
-    
+
       {/* <p>hej</p> */}
     </>
   );
