@@ -88,11 +88,27 @@ p {
   height: 3rem;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
   .form_header {
     margin-left: 10rem;
     margin-right: 10rem;
     font-size: 4vw;
     color: red;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .form_grid {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 15vh 15vh 15vh;
+
+    label {
+      font-size: 1.5rem;
+      color: white;
+    }
   }
 }
