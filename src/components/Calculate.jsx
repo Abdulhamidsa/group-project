@@ -1,6 +1,5 @@
 import { useRef } from "react";
-// import { Link } from "react-scroll";
-
+import { Link } from "react-scroll";
 export default function Calculate(props) {
   const scollToRef = useRef();
   const handleClick = (ev) => {
@@ -30,7 +29,6 @@ export default function Calculate(props) {
         </p>
         <button onClick={() => handleClick()}>DETALED RESULTS</button>
       </section>
-
       <section ref={scollToRef} className="detailed-result">
         <div>
           <h2>Detailed results</h2>
@@ -40,8 +38,8 @@ export default function Calculate(props) {
           {props.some.map((element) => {
             return (
               <div className="some-result">
-                <p> {element.name}</p>
-                <p className="result-nr"> {props.results[element.key]}g CO2</p>
+                <p className="result-nr"> {element.name}</p>
+                <p>{Math.trunc(props.results[element.key])}g co2.</p>
               </div>
             );
           })}

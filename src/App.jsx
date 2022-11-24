@@ -3,7 +3,6 @@ import Form from "./components/Form";
 
 function App() {
   const [start, setStart] = useState(false);
-
   return (
     <>
       {start ? (

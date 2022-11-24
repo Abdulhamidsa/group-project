@@ -18,7 +18,6 @@ function Form() {
     { name: "Twitch", key: "twitch" },
     { name: "Youtube", key: "yt" },
   ];
-
   const multiply = {
     tiktok: 2.63,
     reddit: 2.48,
@@ -28,38 +27,23 @@ function Form() {
     li: 0.71,
     twitter: 0.6,
     yt: 0.46,
+    twitch: 0.55,
   };
-
   // function to calculate co2 produced
-
   const handleSubmit = (event) => {
     console.log("handleSubmit ran");
     console.log("data", formInputs.current.elements);
-    event.preventDefault(); // 👈️ prevent page refresh
+    event.preventDefault(); //  prevent page refresh
     const keys = Object.keys(multiply);
-    // const values = keys.map((entries) => {
-    //   const obj = {};
-    //   obj[entries] = formInputs.current.elements[entries].value * multiply[entries] * 60;
-    //   return { ...obj };
-    // });
     let values = {};
     keys.map((entries) => {
       values[entries] = formInputs.current.elements[entries].value * multiply[entries] * 60;
     });
-    console.log(values);
-
-    // 👇️ access input values here
-    // const formObj = {};
-    // formObj.tiktok = formInputs.current.elements.tiktok.value * multiply.tiktok;
-    // console.log("first 👉️", formInputs.current.elements.tiktok.value * multiply.tiktok);
-    // console.log("last 👉️", formInputs.current.elements.reddit.value * multiply.reddit);
-
     setFormData(values);
-    // 👇️ clear all input values in the form
+    // clear all input values in the form
     setSubmitted(true);
     return values;
   };
-
   return (
     <>
       {submitted ? (
@@ -87,26 +71,4 @@ function Form() {
     </>
   );
 }
-
 export default Form;
-
-//   return (
-//     <>
-//       {submitted ? (
-//         <Calculate some={SoMe} results={formData} />
-//       ) : (
-//         <form onSubmit={handleSubmit} ref={formInputs}>
-//           {SoMe.map((element) => {
-//             return (
-//               <div className="form-control" key={element.key}>
-//                 <label htmlFor={element.name}>{element.name}</label>
-//                 <input type="number" name={element.key}></input>
-//               </div>
-//             );
-//           })}
-//           <button>Calculate</button>
-//         </form>
-//       )}
-//     </>
-//   );
-// }
