@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { Link } from "react-scroll";
 export default function Calculate(props) {
   const scollToRef = useRef();
   const handleClick = (ev) => {
