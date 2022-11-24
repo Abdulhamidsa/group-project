@@ -1,17 +1,18 @@
-import { useState } from "react";
-import { Link } from "react-scroll";
+import { useRef } from "react";
+// import { Link } from "react-scroll";
 
 export default function Calculate(props) {
-  const [isShown, setIsShown] = useState(false);
+  const scollToRef = useRef();
+
   const handleClick = (ev) => {
-    setIsShown((current) => current);
+    scollToRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  console.log("props", props);
+  // console.log("props", props);
 
   const resultsObject = Object.values(props.results);
 
-  console.log("test results", resultsObject);
+  // console.log("test results", resultsObject);
 
   // function to sum everything up
   function sumUp(array) {
@@ -21,7 +22,7 @@ export default function Calculate(props) {
   // calculating how many bottles the user produced
   function calculateBottles() {
     const result = sumUp(resultsObject);
-    console.log(result);
+    // console.log(result);
     return Math.round(result / 82.8);
   }
 
@@ -30,32 +31,33 @@ export default function Calculate(props) {
       <section className="result">
         <p>YOUR TOTAL IS : </p>
         <h2>
-          {sumUp(resultsObject)}g of CO2 <span> PER DAY !</span>
+          {sumUp(resultsObject)}g of CO2 <span className="span-underline"> PER DAY !</span>
         </h2>
-        <p>It is as if you manufactured {calculateBottles()} plastic bottles every day.</p>
-        <p>In one year, you would produce {calculateBottles() * 365} plastic bottles.</p>
-        <Link activeClass="active" to="ss" smooth={true}>
-          <button onClick={() => handleClick()}>DETALED RESULTS</button>
-        </Link>
+        <p>
+          It is as if you manufactured <span className="span-clr"> {calculateBottles()}</span> plastic bottles every day.
+        </p>
+        <p>
+          In one year, you would produce <span className="span-clr"> {calculateBottles() * 365}</span> plastic bottles.
+        </p>
+        <button onClick={() => handleClick()}>DETALED RESULTS</button>
       </section>
-      {isShown && (
-        <section style={{ height: 500 }} id="ss" className="detailed-result">
+
+      <section ref={scollToRef} className="detailed-result">
+        <div>
           <h2>Detailed results</h2>
           <p>Check which social media have the highest carbon footprint.</p>
+        </div>
+        <div className="details-cont">
           {props.some.map((element) => {
-            console.log(props.results[element.key]);
             return (
               <div className="some-result">
-                <p>
-                  {element.name}: You produce {props.results[element.key]}g CO2 on average day.
-                </p>
+                <p> {element.name}</p>
+                <p> {props.results[element.key]}g CO2</p>
               </div>
             );
           })}
-        </section>
-      )}
-
-      {/* here will be option to see more details */}
+        </div>
+      </section>
     </>
   );
 }
