@@ -8,22 +8,20 @@ function Form() {
   const [submitted, setSubmitted] = useState(false);
   // array with SoMe
   const SoMe = [
-    { name: "Tik Tok", key: "tiktok"},
-    { name: "Reddit", key: "reddit"},
-    { name: "Pinterest", key: "pinterest"},
-    { name: "Instagram", key: "ig"},
-    { name: "Snapchat", key: "snapchat"},
-    { name: "Facebook", key: "fb"},
-    { name: "LinkedIn", key: "li"},
-    { name: "Twitter", key: "twitter"},
-    { name: "Twitch", key: "twitch"},
-    { name: "Youtube", key: "yt"},
+    { name: "Tik Tok", key: "tiktok" },
+    { name: "Reddit", key: "reddit" },
+    { name: "Instagram", key: "ig" },
+    { name: "Snapchat", key: "snapchat" },
+    { name: "Facebook", key: "fb" },
+    { name: "LinkedIn", key: "li" },
+    { name: "Twitter", key: "twitter" },
+    { name: "Twitch", key: "twitch" },
+    { name: "Youtube", key: "yt" },
   ];
 
   const multiply = {
     tiktok: 2.63,
     reddit: 2.48,
-    pinterest: 1.3,
     ig: 1.05,
     snapchat: 0.87,
     fb: 0.79,
@@ -49,7 +47,7 @@ function Form() {
       values[entries] = formInputs.current.elements[entries].value * multiply[entries] * 60;
     });
     console.log(values);
-    
+
     // 👇️ access input values here
     // const formObj = {};
     // formObj.tiktok = formInputs.current.elements.tiktok.value * multiply.tiktok;
@@ -64,21 +62,51 @@ function Form() {
 
   return (
     <>
-        {submitted ? <Calculate some={SoMe} results={formData} /> : (
-            <form onSubmit={handleSubmit} ref={formInputs}>
+      {submitted ? (
+        <Calculate some={SoMe} results={formData} />
+      ) : (
+        <>
+          <form onSubmit={handleSubmit} ref={formInputs}>
+            <h2 class="form_header">How many hours do you spend on these social media on an average day?</h2>
+            <div className="form_grid">
               {SoMe.map((element) => {
                 return (
                   <div className="form-control" key={element.key}>
-                    <label htmlFor={element.name}>{element.name}</label>
-                    <input type="number" name={element.key}></input>
+                    <label class="column1" htmlFor={element.name}>
+                      {element.name}
+                    </label>
+                    <input class="column2" type="number" name={element.key}></input>
                   </div>
                 );
               })}
-              <button>Calculate</button>
-            </form>
-        )}
+              <button className="calcBtn">CALCULATE</button>
+            </div>
+          </form>
+        </>
+      )}
     </>
   );
 }
 
 export default Form;
+
+//   return (
+//     <>
+//       {submitted ? (
+//         <Calculate some={SoMe} results={formData} />
+//       ) : (
+//         <form onSubmit={handleSubmit} ref={formInputs}>
+//           {SoMe.map((element) => {
+//             return (
+//               <div className="form-control" key={element.key}>
+//                 <label htmlFor={element.name}>{element.name}</label>
+//                 <input type="number" name={element.key}></input>
+//               </div>
+//             );
+//           })}
+//           <button>Calculate</button>
+//         </form>
+//       )}
+//     </>
+//   );
+// }

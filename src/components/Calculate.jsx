@@ -52,7 +52,7 @@ export default function Calculate(props) {
             return (
               <div className="some-result">
                 <p> {element.name}</p>
-                <p> {props.results[element.key]}g CO2</p>
+                <p className="result-nr"> {props.results[element.key]}g CO2</p>
               </div>
             );
           })}
