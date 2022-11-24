@@ -57,7 +57,7 @@ function Form() {
                     <label class="column1" htmlFor={element.name}>
                       {element.name}
                     </label>
-                    <input class="column2" type="number" name={element.key}></input>
+                    <input class="column2" type="number" step=".01" name={element.key}></input>
                   </div>
                 );
               })}
