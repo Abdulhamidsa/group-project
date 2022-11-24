@@ -1,8 +1,8 @@
 :root {
   --prim-clr: #141414;
   --sec-clr: #e8e8e8;
-  --sec-font: #b0b0b0;
-  --accent-clr: #9f2222;
+  --accent-clr-grey: #b0b0b0;
+  --accent-clr-red: #9f2222;
 }
 html {
   background-color: var(--prim-clr);
@@ -16,7 +16,7 @@ body {
   list-style-type: none;
 }
 h1 {
-  font-size: 7vw;
+  font-size: 6vw;
   color: var(--sec-clr);
   line-height: 1.3;
 }
@@ -27,7 +27,7 @@ h2 {
 }
 p {
   font-size: 1.5rem;
-  color: var(--sec-font);
+  color: var(--accent-clr-grey);
 }
 span {
   position: relative;
@@ -37,7 +37,7 @@ span {
   position: absolute;
   bottom: -11%;
   right: 0;
-  background-color: var(--accent-clr);
+  background-color: var(--accent-clr-red);
   width: 100%;
   height: 4px;
 }
@@ -82,7 +82,7 @@ button:hover {
     font-size: 2.5rem;
   }
   .span-clr {
-    color: var(--accent-clr);
+    color: var(--accent-clr-red);
   }
 }
 .some-result {
@@ -98,7 +98,7 @@ button:hover {
   justify-content: flex-start;
   .result-nr {
     font-size: 1rem;
-    color: var(--accent-clr);
+    color: var(--accent-clr-red);
   }
 }
 /* Grid Forms  */
