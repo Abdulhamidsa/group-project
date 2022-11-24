@@ -31,8 +31,6 @@ function Form() {
   };
   // function to calculate co2 produced
   const handleSubmit = (event) => {
-    console.log("handleSubmit ran");
-    console.log("data", formInputs.current.elements);
     event.preventDefault(); //  prevent page refresh
     const keys = Object.keys(multiply);
     let values = {};
