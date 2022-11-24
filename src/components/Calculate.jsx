@@ -3,29 +3,18 @@ import { useRef } from "react";
 
 export default function Calculate(props) {
   const scollToRef = useRef();
-
   const handleClick = (ev) => {
     scollToRef.current.scrollIntoView({ behavior: "smooth" });
   };
-
-  // console.log("props", props);
-
   const resultsObject = Object.values(props.results);
-
-  // console.log("test results", resultsObject);
-
-  // function to sum everything up
   function sumUp(array) {
     return Math.round(array.reduce((a, b) => a + b, 0));
   }
-
   // calculating how many bottles the user produced
   function calculateBottles() {
     const result = sumUp(resultsObject);
-    // console.log(result);
     return Math.round(result / 82.8);
   }
-
   return (
     <>
       <section className="result">
