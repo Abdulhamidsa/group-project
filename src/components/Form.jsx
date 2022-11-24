@@ -10,7 +10,6 @@ function Form() {
   const SoMe = [
     { name: "Tik Tok", key: "tiktok", co2: 2.63 },
     { name: "Reddit", key: "reddit", co2: 2.48 },
-    { name: "Pinterest", key: "pinterest", co2: 1.3 },
     { name: "Instagram", key: "ig", co2: 1.05 },
     { name: "Snapchat", key: "snapchat", co2: 0.87 },
     { name: "Facebook", key: "fb", co2: 0.79 },
@@ -23,11 +22,11 @@ function Form() {
   const multiply = {
     tiktok: 2.63,
     reddit: 2.48,
-    pinterest: 1.3,
     ig: 1.05,
     snapchat: 0.87,
     fb: 0.79,
     li: 0.71,
+    twitch: 0.55,
     twitter: 0.6,
     yt: 0.46,
   };
@@ -57,21 +56,26 @@ function Form() {
 
   return (
     <>
-        {submitted ? <Calculate results={details} /> : (
-            <>
-                <form onSubmit={handleSubmit} ref={formInputs}>
-                  {SoMe.map((element) => {
-                    return (
-                      <div className="form-control" key={element.key}>
-                        <label htmlFor={element.name}>{element.name}</label>
-                        <input type="number" name={element.key}></input>
-                      </div>
-                    );
-                  })}
-                  <button>Calculate</button>
-                </form>
-            </>
-        )}
+      {submitted ? (
+        <Calculate results={details} />
+      ) : (
+        <>
+          <form onSubmit={handleSubmit} ref={formInputs}>
+            <h2 class="form_header">How many hours do you spend on these social media on an average day?</h2>
+            <div className="form_grid">
+              {SoMe.map((element) => {
+                return (
+                  <div className="form-control" key={element.key}>
+                    <label htmlFor={element.name}>{element.name}</label>
+                    <input type="number" name={element.key}></input>
+                  </div>
+                );
+              })}
+              <button className="calcBtn">CALCULATE</button>
+            </div>
+          </form>
+        </>
+      )}
     </>
   );
 }
